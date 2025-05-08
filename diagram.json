@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "author": "sneha balakrishnan",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-s2-devkitm-1",
+      "id": "esp",
+      "top": -81.11,
+      "left": 110.17,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -114.9,
+      "left": -82.2,
+      "attrs": { "temperature": "27.3" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -90, "left": -5.8, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 169.6,
+      "left": -90.4,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "green", [ "v0" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "v-38.4", "h211.2" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-19.2", "v-76.7" ] ],
+    [ "led1:A", "esp:1", "green", [ "v0" ] ],
+    [ "lcd1:SDA", "esp:8", "green", [ "h-48", "v-182.2", "h259.2" ] ],
+    [ "lcd1:SCL", "esp:9", "green", [ "h-28.8", "v-182.1" ] ]
+  ],
+  "dependencies": {}
+}
